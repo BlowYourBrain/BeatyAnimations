@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@+id/start"
+        motion:duration="250"
+        motion:motionInterpolator="linear">
+
+        <OnSwipe
+            motion:dragDirection="dragLeft"
+            motion:touchAnchorId="@+id/header"
+            motion:touchAnchorSide="right" />
+
+    </Transition>
+
+    <Transition
+        motion:constraintSetEnd="@+id/headerCollapsingStart"
+        motion:constraintSetStart="@+id/headerCollapsingEnd"
+        motion:duration="250"
+        motion:motionInterpolator="linear">
+
+        <OnSwipe
+            motion:dragDirection="dragUp"
+            motion:touchAnchorId="@+id/header"
+            motion:touchAnchorSide="bottom" />
+
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/backButton"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_margin="12dp"
+            android:padding="12dp"
+            android:src="@drawable/ic_arrow_back_24dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:layout_marginTop="12dp"
+            android:alpha="1"
+            motion:layout_constraintStart_toEndOf="@id/backButton"
+            motion:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@+id/nextTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:layout_marginTop="12dp"
+            android:alpha="0"
+            motion:layout_constraintStart_toEndOf="@id/title"
+            motion:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@+id/money"
+            android:layout_width="wrap_content"
+            android:layout_height="64dp"
+            motion:layout_constraintStart_toEndOf="@id/backButton"
+            motion:layout_constraintTop_toBottomOf="@id/title" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+
+        <Constraint
+            android:id="@+id/backButton"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_margin="12dp"
+            android:padding="12dp"
+            android:src="@drawable/ic_arrow_back_24dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:layout_marginTop="12dp"
+            android:alpha="0"
+            motion:layout_constraintEnd_toStartOf="@id/nextTitle"
+            motion:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@+id/nextTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:layout_marginTop="12dp"
+            android:alpha="1"
+            motion:layout_constraintStart_toEndOf="@id/backButton"
+            motion:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@+id/money"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            motion:layout_constraintStart_toEndOf="@id/backButton"
+            motion:layout_constraintTop_toBottomOf="@id/title" />
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/headerCollapsingStart">
+
+        <Constraint android:id="@id/money">
+            <CustomAttribute
+                motion:attributeName="textSize"
+                motion:customFloatValue="16" />
+        </Constraint>
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/headerCollapsingEnd">
+
+        <Constraint android:id="@id/money">
+            <CustomAttribute
+                motion:attributeName="textSize"
+                motion:customFloatValue="20" />
+        </Constraint>
+
+    </ConstraintSet>
+
+</MotionScene>
